@@ -59,8 +59,9 @@ class TelaListaDeCompras extends StatefulWidget {
 
 class _TelaListaDeComprasState extends State<TelaListaDeCompras> {
   List<Produto> listaDeProdutos = [
-    Produto("Iphone 15 Pro max", 1000),
-    Produto("Camisa do Timão todo poderoso", 1000),
+    Produto("Iphone 15 Pro max", 1000, "lib/images/airpods.png"),
+    Produto(
+        "Camisa do Timão todo poderoso", 1000, "lib/images/applevision.png"),
   ];
 
   @override
@@ -73,6 +74,7 @@ class _TelaListaDeComprasState extends State<TelaListaDeCompras> {
             itemCount: listaDeProdutos.length,
             itemBuilder: (context, index) {
               return ListTile(
+                leading: Image.asset(listaDeProdutos[index].images),
                 title: Text(listaDeProdutos[index].nome),
                 subtitle:
                     Text(" R\$ ${listaDeProdutos[index].preco.toString()}0"),
@@ -84,9 +86,11 @@ class _TelaListaDeComprasState extends State<TelaListaDeCompras> {
 class Produto {
   String nome = "";
   double preco = 0.0;
+  String images = "";
 
-  Produto(String _nome, double _preco) {
+  Produto(String _nome, double _preco, String _images) {
     nome = _nome;
     preco = _preco;
+    images = _images;
   }
 }
