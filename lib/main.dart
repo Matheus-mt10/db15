@@ -68,16 +68,24 @@ class _TelaListaDeComprasState extends State<TelaListaDeCompras> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Lista de compras"),
-      ),
+          title: const Text(
+            "Lista de compras",
+            style: TextStyle(color: Colors.white),
+          ),
+          backgroundColor: Colors.black),
       body: ListView.builder(
           itemCount: listaDeProdutos.length,
           itemBuilder: (context, index) {
-            return ListTile(
-              leading: Image.asset(listaDeProdutos[index].images),
-              title: Text(listaDeProdutos[index].nome),
-              subtitle:
-                  Text(" R\$ ${listaDeProdutos[index].preco.toString()}0"),
+            return Padding(
+              padding: const EdgeInsets.only(left: 10, right: 10, top: 10),
+              child: Card(
+                child: ListTile(
+                  leading: Image.asset(listaDeProdutos[index].images),
+                  title: Text(listaDeProdutos[index].nome),
+                  subtitle:
+                      Text(" R\$ ${listaDeProdutos[index].preco.toString()}0"),
+                ),
+              ),
             );
           }),
     );
