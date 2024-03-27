@@ -88,6 +88,25 @@ class _TelaListaDeComprasState extends State<TelaListaDeCompras> {
               ),
             );
           }),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: const Icon(Icons.shopping_cart),
+      ),
+      bottomSheet: SizedBox(
+        height: 50,
+        child: Container(
+          color: Colors.pink,
+          child: const Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                "Preço Total",
+                style: TextStyle(fontSize: 20),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
