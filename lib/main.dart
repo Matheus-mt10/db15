@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 void main() {
   runApp(const MaterialApp(
     title: "Meu primeiro App",
-    home: TelaListaDeCompras(),
+    home: PaginaPrincipal(),
   ));
 }
 
@@ -42,7 +42,14 @@ class _PaginaPrincipalState extends State<PaginaPrincipal> {
               Padding(
                 padding: const EdgeInsets.all(25.0),
                 child: ElevatedButton(
-                    onPressed: () {}, child: const Text("Login")),
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  const TelaListaDeCompras()));
+                    },
+                    child: const Text("Login")),
               )
             ],
           ),
@@ -73,21 +80,25 @@ class _TelaListaDeComprasState extends State<TelaListaDeCompras> {
             style: TextStyle(color: Colors.white),
           ),
           backgroundColor: Colors.black),
-      body: ListView.builder(
-          itemCount: listaDeProdutos.length,
-          itemBuilder: (context, index) {
-            return Padding(
-              padding: const EdgeInsets.only(left: 10, right: 10, top: 10),
-              child: Card(
-                child: ListTile(
-                  leading: Image.asset(listaDeProdutos[index].images),
-                  title: Text(listaDeProdutos[index].nome),
-                  subtitle:
-                      Text(" R\$ ${listaDeProdutos[index].preco.toString()}0"),
-                ),
-              ),
-            );
-          }),
+      body: Column(
+        children: [
+          ListView.builder(
+              itemCount: listaDeProdutos.length,
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.only(left: 10, right: 10, top: 10),
+                  child: Card(
+                    child: ListTile(
+                      leading: Image.asset(listaDeProdutos[index].images),
+                      title: Text(listaDeProdutos[index].nome),
+                      subtitle: Text(
+                          " R\$ ${listaDeProdutos[index].preco.toString()}0"),
+                    ),
+                  ),
+                );
+              }),
+        ],
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         child: const Icon(Icons.shopping_cart),
