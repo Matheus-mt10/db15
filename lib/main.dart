@@ -71,6 +71,8 @@ class _TelaListaDeComprasState extends State<TelaListaDeCompras> {
         "Camisa do Timão todo poderoso", 1000, "lib/images/applevision.png"),
   ];
 
+  List<Produto> itensComprados = [];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -83,6 +85,7 @@ class _TelaListaDeComprasState extends State<TelaListaDeCompras> {
       body: Column(
         children: [
           ListView.builder(
+              shrinkWrap: true,
               itemCount: listaDeProdutos.length,
               itemBuilder: (context, index) {
                 return Padding(
@@ -93,6 +96,9 @@ class _TelaListaDeComprasState extends State<TelaListaDeCompras> {
                       title: Text(listaDeProdutos[index].nome),
                       subtitle: Text(
                           " R\$ ${listaDeProdutos[index].preco.toString()}0"),
+                      trailing: ElevatedButton(onPressed: () {
+                        itensComprados.add(listaDeProdutos[index]);
+                      }, child: const Text('Comprar'),),
                     ),
                   ),
                 );
