@@ -96,9 +96,12 @@ class _TelaListaDeComprasState extends State<TelaListaDeCompras> {
                       title: Text(listaDeProdutos[index].nome),
                       subtitle: Text(
                           " R\$ ${listaDeProdutos[index].preco.toString()}0"),
-                      trailing: ElevatedButton(onPressed: () {
-                        itensComprados.add(listaDeProdutos[index]);
-                      }, child: const Text('Comprar'),),
+                      trailing: ElevatedButton(
+                        onPressed: () {
+                          itensComprados.add(listaDeProdutos[index]);
+                        },
+                        child: const Text('Comprar'),
+                      ),
                     ),
                   ),
                 );
