@@ -73,6 +73,8 @@ class _TelaListaDeComprasState extends State<TelaListaDeCompras> {
 
   List<Produto> itensComprados = [];
 
+  double valorTotal = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -99,6 +101,8 @@ class _TelaListaDeComprasState extends State<TelaListaDeCompras> {
                       trailing: ElevatedButton(
                         onPressed: () {
                           itensComprados.add(listaDeProdutos[index]);
+                          print(
+                              "Existem ${listaDeProdutos} produtos na lista de itens compradas");
                         },
                         child: const Text('Comprar'),
                       ),
