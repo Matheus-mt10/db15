@@ -73,15 +73,16 @@ class _TelaListaDeComprasState extends State<TelaListaDeCompras> {
 
   List<Produto> itensComprados = [];
 
-  double valorTotal = 0;
+  double valorTotal = 1000000000000;
 
   @override
   void setState(VoidCallback fn) {
-    // TODO: implement setState
+    atualizarValorTotal();
     super.setState(fn);
   }
 
   atualizarValorTotal() {
+    double valorTotal = 0;
     for (int i = 0; i < itensComprados.length; i++) {
       valorTotal = valorTotal + itensComprados[i].preco;
     }
@@ -112,8 +113,7 @@ class _TelaListaDeComprasState extends State<TelaListaDeCompras> {
                       trailing: ElevatedButton(
                         onPressed: () {
                           itensComprados.add(listaDeProdutos[index]);
-                          print(
-                              "Existem ${listaDeProdutos} produtos na lista de itens compradas");
+                          setState(() {});
                         },
                         child: const Text('Comprar'),
                       ),
