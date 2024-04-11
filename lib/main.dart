@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-void main() {
+main() {
   runApp(const MaterialApp(
     title: "Meu primeiro App",
     home: PaginaPrincipal(),
@@ -76,6 +76,17 @@ class _TelaListaDeComprasState extends State<TelaListaDeCompras> {
   double valorTotal = 0;
 
   @override
+  void setState(VoidCallback fn) {
+    // TODO: implement setState
+    super.setState(fn);
+  }
+
+  atualizarValorTotal() {
+    for (int i = 0; i < itensComprados.length; i++) {
+      valorTotal = valorTotal + itensComprados[i].preco;
+    }
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -120,11 +131,11 @@ class _TelaListaDeComprasState extends State<TelaListaDeCompras> {
         height: 50,
         child: Container(
           color: Colors.pink,
-          child: const Row(
+          child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                "Preço Total",
+                'Preço Total: R\$ $valorTotal' + '0',
                 style: TextStyle(fontSize: 20),
               ),
             ],
